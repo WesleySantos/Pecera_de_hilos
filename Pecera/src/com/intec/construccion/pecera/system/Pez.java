@@ -46,11 +46,11 @@ public class Pez extends Thread{
 	private void moveOnMatrix(int x, int y){
 		
 		for(int i = 0; i < pasos; i++){
-			number = rand.nextInt(2);
+			number = rand.nextInt(5);
 			
-			if(number == 1){
+			if(number == 0){
 				clearConsole();
-				
+				//0 = izquierda
 				if(y+1 != 10){
 					matrix[x][y] = " 0 ";
 					matrix[x][y+1] = "><>";
@@ -61,9 +61,9 @@ public class Pez extends Thread{
 					y--;
 				}
 				showMatrix();
-			}else{
+			}else if(number == 1){
 				clearConsole();
-				
+				//1 = abajo
 				if(x+1 != 10){
 					matrix[x][y] = " 0 ";
 					matrix[x+1][y] = "><>";
@@ -74,7 +74,34 @@ public class Pez extends Thread{
 					x--;
 				}
 				showMatrix();
+			}else if(number == 2){
+				clearConsole();
+				//2 = derecha
+				if(y-1 != 0){
+					matrix[x][y] = " 0 ";
+					matrix[x][y-1] = "><>";
+					y--;
+				}else{
+					matrix[x][y] = " 0 ";
+					matrix[x][y+1] = "><>";
+					y++;
+				}
+				showMatrix();
+			}else if(number == 3){
+				clearConsole();
+				//3 = arriba
+				if(x-1 != 0){
+					matrix[x][y] = " 0 ";
+					matrix[x-1][y] = "><>";
+					x--;
+				}else{
+					matrix[x][y] = " 0 ";
+					matrix[x+1][y] = "><>";
+					x++;
+				}
+				showMatrix();
 			}
+			
 		}
 	}
 
