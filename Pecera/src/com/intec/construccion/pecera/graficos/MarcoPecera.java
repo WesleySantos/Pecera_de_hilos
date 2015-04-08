@@ -23,7 +23,6 @@ public class MarcoPecera extends JFrame{
 	private void crearMarco(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        //pack();
         getContentPane().setBackground(Color.white);
         setSize(1300, 700);
         setLocationRelativeTo(null);
@@ -42,7 +41,7 @@ public class MarcoPecera extends JFrame{
 		parteTierra.setBackground(Color.darkGray);
 		parteTierra.setOpaque(true);
 		
-		setLayout(new FlowLayout());
+		setLayout(null);
 		
 		add(parteAgua);
 		add(parteTierra);
@@ -62,19 +61,19 @@ public class MarcoPecera extends JFrame{
 		if(animal == "pez"){
 			//Pez pez = new Pez(sexo);
 			if(sexo == 'M'){
-				JLabel labelPezM = new JLabel("pezMacho");
+				JLabel labelPezM = new JLabel(pezMacho);
 				parteAgua.add(labelPezM);
 			}else{
-				JLabel labelPezF = new JLabel("pezHembra");
+				JLabel labelPezF = new JLabel(pezHembra);
 				parteAgua.add(labelPezF);
 			}
 		}else{
 			//Tiburon tiburon = new Tiburon(sexo);
 			if(sexo == 'M'){
-				JLabel labelTibuM = new JLabel("tibuMacho");
+				JLabel labelTibuM = new JLabel(tibuMacho);
 				parteAgua.add(labelTibuM);
 			}else{
-				JLabel labelTibuF = new JLabel("tibuHembra");
+				JLabel labelTibuF = new JLabel(tibuHembra);
 				parteAgua.add(labelTibuF);
 			}
 		}
