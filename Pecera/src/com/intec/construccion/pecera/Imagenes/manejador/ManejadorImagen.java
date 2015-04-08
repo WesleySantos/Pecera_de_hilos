@@ -5,10 +5,8 @@ import javax.swing.ImageIcon;
 
 public class ManejadorImagen {
 
-	private ImageIcon [] elementos, animales;
+	public static ImageIcon [] elementos, animales;
 	
-	{
-	}
 	
 	public ManejadorImagen() {
 

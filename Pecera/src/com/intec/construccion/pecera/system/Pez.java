@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class Pez extends Thread{
 	private char sexo;
+	
+	
 	private Integer pasos = 20;
 	Random rand = new Random();
 	int number;
