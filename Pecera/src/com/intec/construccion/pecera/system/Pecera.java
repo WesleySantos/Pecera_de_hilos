@@ -6,6 +6,8 @@ public class Pecera {
 
 	public static void main(String[] args) {
 		new MarcoPecera("la real pecera");
+		Pez pez1 = new Pez("M");
+		pez1.start();
 	}
 
 }
