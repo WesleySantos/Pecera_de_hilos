@@ -14,14 +14,12 @@ public class ManejadorImagen {
 		animales = new ImageIcon[4];
 		
 		cargarElementos();
-		cargarAnimales();
-	
+		cargarAnimales();	
 	}
 	
 	private void cargarElementos(){
 		elementos[0] = new ImageIcon(getClass().getResource("/com/intec/construccion/pecera/Imagenes/png/burbujas.png"));
-		elementos[1] = new ImageIcon(getClass().getResource("/com/intec/construccion/pecera/Imagenes/png/piedras.png"));
-		
+		elementos[1] = new ImageIcon(getClass().getResource("/com/intec/construccion/pecera/Imagenes/png/piedras.png"));		
 	}
 	
 	private void cargarAnimales(){
@@ -29,7 +27,6 @@ public class ManejadorImagen {
 		animales[1] = new ImageIcon(getClass().getResource("/com/intec/construccion/pecera/Imagenes/png/pezmacho.png"));
 		animales[2] = new ImageIcon(getClass().getResource("/com/intec/construccion/pecera/Imagenes/png/tiburonhembra.png"));
 		animales[3] = new ImageIcon(getClass().getResource("/com/intec/construccion/pecera/Imagenes/png/tiburonmacho.png"));
-		
 	}
 
 	public ImageIcon[] getElementos() {
@@ -39,5 +36,4 @@ public class ManejadorImagen {
 	public ImageIcon[] getAnimales() {
 		return animales;
 	}
-
 }

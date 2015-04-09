@@ -54,8 +54,7 @@ public class MarcoPecera extends JFrame{
 		parteAgua.setBounds(0, 0, 1300, 620);
 		parteTierra.setBounds(0, 620, 1300, 80);
 		
-	}
-	
+	}	
 	public void addLabelAnimal(String animal, char sexo, Point spawn){
 		
 		if(animal == "pez"){
@@ -108,6 +107,3 @@ public class MarcoPecera extends JFrame{
 		return label;
 	}
 }
-
-
-

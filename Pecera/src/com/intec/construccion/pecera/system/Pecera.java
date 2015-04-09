@@ -6,9 +6,11 @@ import java.util.Random;
 import com.intec.construccion.pecera.graficos.MarcoPecera;
 
 public class Pecera {
-
+	
+	private final static String JLabelName = "Pecera de asesinatos";
+	//Este es el nombre que va a tener el Frame de la pecera
 	public static void main(String[] args) {
-		MarcoPecera marco = new MarcoPecera("la real pecera");		
+		MarcoPecera marco = new MarcoPecera(JLabelName);		
 		marco.addLabelAnimal("pez", 'M', spawnPoint());
 	}
 	
