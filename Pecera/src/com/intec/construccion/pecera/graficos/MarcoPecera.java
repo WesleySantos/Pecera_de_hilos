@@ -83,14 +83,14 @@ public class MarcoPecera extends JFrame{
 				label.setLocation(spawn);
 				parteAgua.add(definirLabel(label));
 				
-				Tiburon tiburon = new Tiburon('M', label, 200);
+				Tiburon tiburon = new Tiburon('M', label, 200, spawn);
 				tiburon.start();
 			}else{										//tiburon hembra
 				JLabel label = new JLabel("");
 				label.setLocation(spawn);
 				parteAgua.add(definirLabel(label));
 				
-				Tiburon tiburon = new Tiburon('F', label, 200);
+				Tiburon tiburon = new Tiburon('F', label, 200, spawn);
 				tiburon.start();
 			}
 			
