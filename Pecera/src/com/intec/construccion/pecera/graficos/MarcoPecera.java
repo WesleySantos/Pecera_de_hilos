@@ -3,6 +3,7 @@ package com.intec.construccion.pecera.graficos;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 
 import javax.swing.*;
 
@@ -14,6 +15,13 @@ public class MarcoPecera extends JFrame{
 	
 	JPanel parteAgua = new JPanel();
 	JPanel parteTierra = new JPanel();
+	
+	ManejadorImagen manejadorImagen = new ManejadorImagen();
+	
+	ImageIcon pezHembra = manejadorImagen.animales[0];
+	ImageIcon pezMacho = manejadorImagen.animales[1];
+	ImageIcon tibuHembra = manejadorImagen.animales[2];
+	ImageIcon tibuMacho = manejadorImagen.animales[3];
 	
 	public MarcoPecera(String titulo) {
 		setTitle(titulo);
@@ -28,7 +36,7 @@ public class MarcoPecera extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
         dividirPecera();
-        
+        setLayout(null);
 	}
 	
 	private void dividirPecera(){
@@ -41,8 +49,6 @@ public class MarcoPecera extends JFrame{
 		parteTierra.setBackground(Color.darkGray);
 		parteTierra.setOpaque(true);
 		
-		setLayout(null);
-		
 		add(parteAgua);
 		add(parteTierra);
 		parteAgua.setBounds(0, 0, 1300, 620);
@@ -50,34 +56,56 @@ public class MarcoPecera extends JFrame{
 		
 	}
 	
-	public void addLabelAnimal(String animal, char sexo){
-		ManejadorImagen manejadorImagen = new ManejadorImagen();
-		
-		ImageIcon pezHembra = manejadorImagen.animales[0];
-		ImageIcon pezMacho = manejadorImagen.animales[1];
-		ImageIcon tibuHembra = manejadorImagen.animales[2];
-		ImageIcon tibuMacho = manejadorImagen.animales[3];
+	public void addLabelAnimal(String animal, char sexo, Point spawn){
 		
 		if(animal == "pez"){
-			//Pez pez = new Pez(sexo);
-			if(sexo == 'M'){
-				JLabel labelPezM = new JLabel(pezMacho);
-				parteAgua.add(labelPezM);
-			}else{
-				JLabel labelPezF = new JLabel(pezHembra);
-				parteAgua.add(labelPezF);
+			
+			if(sexo == 'M'){							//pez macho
+				JLabel label = new JLabel("");
+				label.setLocation(spawn);
+				parteAgua.add(definirLabel(label));
+				
+				Pez pez = new Pez('M', label, 200, spawn);
+				pez.start();
+			}else{										//pez hembra
+				JLabel label = new JLabel("");
+				label.setLocation(spawn);
+				parteAgua.add(definirLabel(label));
+				
+				Pez pez = new Pez('F', label, 200, spawn);
+				pez.start();
 			}
+			
 		}else{
-			//Tiburon tiburon = new Tiburon(sexo);
-			if(sexo == 'M'){
-				JLabel labelTibuM = new JLabel(tibuMacho);
-				parteAgua.add(labelTibuM);
-			}else{
-				JLabel labelTibuF = new JLabel(tibuHembra);
-				parteAgua.add(labelTibuF);
+			
+			if(sexo == 'M'){							//tiburon macho
+				JLabel label = new JLabel("");
+				label.setLocation(spawn);
+				parteAgua.add(definirLabel(label));
+				
+				Tiburon tiburon = new Tiburon('M', label, 200);
+				tiburon.start();
+			}else{										//tiburon hembra
+				JLabel label = new JLabel("");
+				label.setLocation(spawn);
+				parteAgua.add(definirLabel(label));
+				
+				Tiburon tiburon = new Tiburon('F', label, 200);
+				tiburon.start();
 			}
+			
 		}
 		
+	}
+	
+	private JLabel definirLabel(JLabel label){
+		label.setIcon(pezMacho);
+		label.setBackground(Color.cyan);
+		label.setOpaque(true);
+		label.setVisible(true);
+		label.setBounds(10, 0, 100, 70);
+		
+		return label;
 	}
 }
 
