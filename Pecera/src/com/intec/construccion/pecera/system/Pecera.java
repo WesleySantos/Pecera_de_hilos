@@ -12,21 +12,30 @@ public class Pecera {
 	
 	private final static String NombrePecera = "Pecera de asesinatos";
 	
-	static JLabel[] labels;
+	static JLabel[] labelsPVaron;
+	static JLabel[] labelsPHembra;
+	
 	static ArrayList<Pez> listaPeces = new ArrayList<>();
+	static ArrayList<Pez> listaTiburones = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
 		MarcoPecera marco = new MarcoPecera(NombrePecera);
 		
-		 labels = new JLabel[3];
-		
-		
-		for (int i = 0; i < 3; i++) {
-			labels[i] = new JLabel();
+		labelsPVaron = new JLabel[10];
+		labelsPHembra = new JLabel[10];
+		 
+		for (int i = 0; i < 10; i++) {
+			labelsPVaron[i] = new JLabel();
+			Pez pez1 = new Pez('M', labelsPVaron[i], 100, spawnPoint());
 			
-			Pez pez1 = new Pez('M', labels[i], 100, spawnPoint());
+			labelsPHembra[i] = new JLabel();
+			Pez pez2 = new Pez('F', labelsPHembra[i], 100, spawnPoint());
+			
 			listaPeces.add(pez1);
+			listaPeces.add(pez2);
+			
+			
 		}
 		
 		marco.addLabelAnimal(listaPeces);

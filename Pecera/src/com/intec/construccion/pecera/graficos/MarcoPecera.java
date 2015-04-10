@@ -58,58 +58,27 @@ public class MarcoPecera extends JFrame{
 	}
 	
 	public void addLabelAnimal(ArrayList<Pez> peces){
-	
-		// jl = new JLabel("");
 
 		for(Pez p: peces){
-			parteAgua.add(definirLabel(p.getLabel()));
-			//p.getLabel().setLocation(p.puntoLabel);
-			//repaint();
+			parteAgua.add(definirLabel(p.getLabel(),p.getSexo()));
 			p.start();
 		}
-/*
-		if(animal == "pez"){
-			
-			if(sexo == 'M'){							//pez macho
-				JLabel label = new JLabel("");
-				label.setLocation(spawn);
-				parteAgua.add(definirLabel(label));
-				
-				Pez pez = new Pez('M', label, 200, spawn);
-				pez.start();
-			}else{										//pez hembra
-				JLabel label = new JLabel("");
-				label.setLocation(spawn);
-				parteAgua.add(definirLabel(label));
-				
-				Pez pez = new Pez('F', label, 200, spawn);
-				pez.start();
-			}
-			
-		}else{
-			
-			if(sexo == 'M'){							//tiburon macho
-				JLabel label = new JLabel("");
-				label.setLocation(spawn);
-				parteAgua.add(definirLabel(label));
-				
-				Tiburon tiburon = new Tiburon('M', label, 200, spawn);
-				tiburon.start();
-			}else{										//tiburon hembra
-				JLabel label = new JLabel("");
-				label.setLocation(spawn);
-				parteAgua.add(definirLabel(label));
-				
-				Tiburon tiburon = new Tiburon('F', label, 200, spawn);
-				tiburon.start();
-			}
-			
-		}
-		*/
+
 	}
 	
-	private JLabel definirLabel(JLabel label){
-		label.setIcon(pezMacho);
+	private JLabel definirLabel(JLabel label, char sexo){
+		
+		switch (sexo) {
+		case 'M':
+			label.setIcon(pezMacho);
+			break;
+		case 'F':
+			label.setIcon(pezHembra);
+			break;
+		default:
+			break;
+		}
+		
 		label.setBackground(Color.cyan);
 		label.setOpaque(true);
 		label.setVisible(true);
