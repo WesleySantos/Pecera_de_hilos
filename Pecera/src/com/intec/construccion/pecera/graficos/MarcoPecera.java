@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -55,8 +56,18 @@ public class MarcoPecera extends JFrame{
 		parteTierra.setBounds(0, 620, 1300, 80);
 		
 	}	
-	public void addLabelAnimal(String animal, char sexo, Point spawn){
+//	public void addLabelAnimal(String animal, char sexo, Point spawn){
+	public void addLabelAnimal(ArrayList<Pez> pez){
+	
+		JLabel jl = new JLabel("");
 		
+		for(Pez p: pez){
+			parteAgua.add(definirLabel(p.getLabel()));
+			//p.getLabel().setLocation(p.puntoLabel);
+			//repaint();
+			p.start();
+		}
+/*
 		if(animal == "pez"){
 			
 			if(sexo == 'M'){							//pez macho
@@ -94,7 +105,7 @@ public class MarcoPecera extends JFrame{
 			}
 			
 		}
-		
+		*/
 	}
 	
 	private JLabel definirLabel(JLabel label){
