@@ -10,18 +10,22 @@ import com.intec.construccion.pecera.graficos.MarcoPecera;
 
 public class Pecera {
 	
-	private final static String JLabelName = "Pecera de asesinatos";
-	//Este es el nombre que va a tener el Frame de la pecera
+	private final static String NombrePecera = "Pecera de asesinatos";
+	
+	static JLabel[] labels;
+	static ArrayList<Pez> listaPeces = new ArrayList<>();
+	
 	public static void main(String[] args) {
-		MarcoPecera marco = new MarcoPecera("la real pecera");		
-	//	MarcoPecera marco = new MarcoPecera(JLabelName);		
-	//	marco.addLabelAnimal("pez", 'M', spawnPoint());
 		
-		ArrayList<Pez> listaPeces = new ArrayList<>(); 
-		JLabel label = new JLabel("");
-
-		for (int i = 0; i < 5; i++) {
-			Pez pez1 = new Pez('M', label, 200, spawnPoint());
+		MarcoPecera marco = new MarcoPecera(NombrePecera);
+		
+		 labels = new JLabel[3];
+		
+		
+		for (int i = 0; i < 3; i++) {
+			labels[i] = new JLabel();
+			
+			Pez pez1 = new Pez('M', labels[i], 100, spawnPoint());
 			listaPeces.add(pez1);
 		}
 		
