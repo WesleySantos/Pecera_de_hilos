@@ -26,10 +26,7 @@ public class Pez extends Thread{
 		
 		for(int i = 0; i < limite; i++){
 			try {
-				
 				//obtiene el punto presente del label
-				
-				
 				Point punto = moveOnMatrix(X,Y);
 				
 				X = punto.x;

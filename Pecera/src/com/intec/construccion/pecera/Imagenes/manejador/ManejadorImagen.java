@@ -1,6 +1,5 @@
 package com.intec.construccion.pecera.Imagenes.manejador;
 
-
 import javax.swing.ImageIcon;
 
 public class ManejadorImagen {
