@@ -10,7 +10,7 @@ public class Pez extends Thread{
 	private char sexo;
 	private JLabel label;
 	private int limite;
-	private Point puntoLabel;
+	public Point puntoLabel;
 	
 	public Pez(char sexo, JLabel label, int limite, Point punto){
 		this.setSexo(sexo);
@@ -30,10 +30,19 @@ public class Pez extends Thread{
 				//obtiene el punto presente del label
 				
 				
-				Point punto = moveOnMatrix(X,Y);
+				//Point punto = new Point(); //   moveOnMatrix(X,Y);
 				
-				X = punto.x;
-				Y = punto.y;
+				int xy[] = new int[2];
+				xy[0] = X;
+				xy[1] = Y;
+				
+				xy = GetXY(xy);
+				
+				X = xy[0];
+				Y = xy[1];
+				
+				//X = punto.x;
+				//Y = punto.y;
 				
 				label.setLocation(X,Y);
 				
@@ -44,6 +53,63 @@ public class Pez extends Thread{
 		}
 		
 		yield();
+	}
+	
+	private int[] GetXY(int[] xy){
+		Random rand = new Random();
+		int number = rand.nextInt(8);
+		
+		switch(number){
+		case 0:	//izquierda
+			
+			if(xy[0] -1 > 0)
+				xy[0] = xy[0]-1;
+			
+			break;
+		case 1:	//derecha
+			
+			if(xy[0]+1 < 1300)
+				xy[0] = xy[0]+1;
+			break;
+		case 2:	//arriba
+			
+			if(xy[1]-1 > 0)
+				xy[1] = xy[1]-1;
+			
+			break;
+		case 3:	//abajo
+			
+			if(xy[1]+1 < 700)
+				xy[1] = xy[1] +1;
+			
+			break;
+		case 4:	//superior izquierda
+			
+			if( xy[0] -1 > 0 && xy[1] -1 >0)
+				xy[0] = xy[0]-1;xy[1] = xy[1]-1;
+			
+			break;
+		case 5:	//superior derecha
+			
+			if(xy[0]+1 < 1300 && xy[1]-1 > 0)
+				xy[0]= xy[0]+1; xy[1]= xy[1]-1;
+			
+			break;
+		case 6:	//inferior izquierda
+			
+			if(xy[0]-1 > 0 && xy[1]+1 < 700)
+				xy[0]= xy[0]-1;  xy[1]= xy[1]+1;
+			
+			break;
+		case 7:	//inferior derecha
+			
+			if(xy[0]+1 < 1300 && xy[1]+1 < 700)
+				xy[0]= xy[0]+1; xy[1]= xy[1]+1; 
+				
+			break;
+		}
+			
+		return xy;
 	}
 	
 	//genera un punto aleatorio al rededor de las coordenadas de parametro 
