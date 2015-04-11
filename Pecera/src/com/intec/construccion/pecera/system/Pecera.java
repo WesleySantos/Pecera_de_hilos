@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import com.intec.construccion.pecera.graficos.MarcoPecera;
 
@@ -29,11 +30,35 @@ public class Pecera {
 		
 		try 
 		{
+			/*
 			System.out.println("Introduce la cantidad de peces hombres: ");
 			cntPez_hombre = reader.nextInt();
 			System.out.println("Introduce la cantidad de peces mujeres: ");
 			cntPez_hembra = reader.nextInt();
 			System.out.println("Ejecutando...");
+			*/
+			//Using GUI
+			
+			boolean flag = true;
+			String firstNumber = null, secondNumber = null;
+			
+			while ( flag ) {
+				firstNumber = JOptionPane.showInputDialog("Introduce la cantidad de peces hombres:");
+				if ( isNumber(firstNumber) ) {
+					flag = false;
+				}
+				if ( !flag ) {
+					secondNumber = JOptionPane.showInputDialog("Introduce la cantidad de peces mujeres:");
+					if ( !isNumber(secondNumber)) {
+						flag = true;
+					}
+				}
+				if ( flag ) {
+					JOptionPane.showMessageDialog(null, "Uno de los numeros introducidos contiene un formato invalido, intente otra vez");
+				}
+			}
+			cntPez_hombre = Integer.parseInt(firstNumber);
+			cntPez_hembra = Integer.parseInt(secondNumber);
 			
 		} catch (Exception e) {
 			cntPez_hombre = 10;
@@ -86,5 +111,15 @@ public class Pecera {
 	    int randomNum = rand.nextInt((max - min) + 1) + min;
 
 	    return randomNum;
+	}
+	
+	//Chequea si un string es numerico
+	private static boolean isNumber( String x ) {
+		for ( int i = x.length()-1; i>=0; i-- ) {
+			if ( x.charAt(i) > '9') {
+				return false;
+			}
+		}
+		return true;
 	}
 }
