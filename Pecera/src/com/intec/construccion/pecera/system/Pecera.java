@@ -12,7 +12,10 @@ import com.intec.construccion.pecera.graficos.MarcoPecera;
 public class Pecera {
 	
 	private final static String NombrePecera = "Pecera de asesinatos";
-	private static int cntPez_hombre, cntPez_hembra;
+	
+	private static int cntPez_hombre, cntPez_hembra,
+						cntTiburones_hombre, cntTiburones_hembra;
+	
 	static JLabel[] labelsPVaron;
 	static JLabel[] labelsPHembra;
 	
@@ -27,15 +30,7 @@ public class Pecera {
 		
 		try 
 		{
-			/*
-			System.out.println("Introduce la cantidad de peces hombres: ");
-			cntPez_hombre = reader.nextInt();
-			System.out.println("Introduce la cantidad de peces mujeres: ");
-			cntPez_hembra = reader.nextInt();
-			System.out.println("Ejecutando...");
-			*/
-			//Using GUI
-			
+			//Using GUI	
 			boolean flag = true;
 			String firstNumber = null, secondNumber = null;
 			
@@ -72,6 +67,44 @@ public class Pecera {
 		labelsPVaron = new JLabel[cntPez_hombre + 1];
 		labelsPHembra = new JLabel[cntPez_hembra + 1];
 		 
+		//	Obteniendo la cantidad de tiburones machos y hembras
+		
+		try 
+		{
+			//Using GUI	
+			boolean flag = true;
+			String firstNumber = null, secondNumber = null;
+			
+			while ( flag ) {
+				firstNumber = JOptionPane.showInputDialog("Introduce la cantidad de tiburones hombres:");
+				if ( isNumber(firstNumber) ) {
+					flag = false;
+				}
+				if ( !flag && !(firstNumber.length() == 0) ) {
+					secondNumber = JOptionPane.showInputDialog("Introduce la cantidad de tiburones mujeres:");
+					if ( !isNumber(secondNumber)) {
+						flag = true;
+					}
+				}
+				if ( flag  || firstNumber.length() == 0 || secondNumber.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Uno de los numeros introducidos contiene un formato invalido, intente otra vez");
+					flag = true;
+				}
+			}
+			cntTiburones_hombre = Integer.parseInt(firstNumber);
+			cntTiburones_hembra = Integer.parseInt(secondNumber);
+			
+		} catch (Exception e) {
+			cntTiburones_hombre = 10;
+			cntTiburones_hembra = 10;
+			System.out.printf("La cantidad de peces va"
+					+ "rones introducida es invalida, se"
+					+ " ha definido por default los siguientes valores:\n"
+					+ "Tiburones hombres: %i\n"
+					+ "Tiburones hembras: %i\n",
+					cntPez_hombre, cntPez_hembra);
+		}
+		
 		//	Insertando los peces hombres
 		for (int i = 0; i < cntPez_hombre; i++) {
 
@@ -89,19 +122,21 @@ public class Pecera {
 			listaPeces.add(pez2);
 		}
 		
-		//agregando tiburones manualmente
-		JLabel labeltibu1 = new JLabel();
-		JLabel labeltibu2 = new JLabel();
-		JLabel labeltibu3 = new JLabel();
-		
-		Tiburon tibu1 = new Tiburon('M', labeltibu1, 100, spawnPoint());
-		Tiburon tibu2 = new Tiburon('M', labeltibu2, 100, spawnPoint());
-		Tiburon tibu3 = new Tiburon('F', labeltibu3, 100, spawnPoint());
-		
-		listaTiburones.add(tibu1);
-		listaTiburones.add(tibu2);
-		listaTiburones.add(tibu3);
-		
+		//agregando tiburones machos
+		for (int i = 0; i < cntTiburones_hombre; i++) 
+		{
+			JLabel labeltiburon = new JLabel();
+			Tiburon tiburon = new Tiburon('M', labeltiburon, 100, spawnPoint());
+			
+			listaTiburones.add(tiburon);
+		}
+		for (int i = 0; i < cntTiburones_hembra; i++) 
+		{
+			JLabel labeltiburon = new JLabel();
+			Tiburon tiburon = new Tiburon('F', labeltiburon, 100, spawnPoint());
+			
+			listaTiburones.add(tiburon);
+		}
 		
 		marco.addLabelPez(listaPeces);
 		marco.addLabelTiburon(listaTiburones);
