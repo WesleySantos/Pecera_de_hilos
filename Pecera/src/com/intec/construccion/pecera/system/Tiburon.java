@@ -10,7 +10,7 @@ public class Tiburon extends Thread{
 	private char sexo;
 	private JLabel label;
 	private int limite;
-	private Point puntoLabel;
+	public Point puntoLabel;
 	
 	public Tiburon(char sexo, JLabel label, int limite, Point punto){
 		this.setSexo(sexo);
@@ -21,23 +21,21 @@ public class Tiburon extends Thread{
 	
 	@Override
 	public void run(){
-		int X = puntoLabel.x;
-		int Y = puntoLabel.y;
+		int x = puntoLabel.x;
+		int y = puntoLabel.y;
+		
+		label.setLocation(x,y);
+		
 		
 		for(int i = 0; i < limite; i++){
 			try {
+								
+				int X = label.getLocation().x;
+				int Y = label.getLocation().y;
 				
-				//obtiene el punto presente del label
+				moveOnMatrix(X,Y);
 				
-				
-				Point punto = moveOnMatrix(X,Y);
-				
-				X = punto.x;
-				Y = punto.y;
-				
-				label.setLocation(X,Y);
-				
-				Thread.sleep(70);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -47,65 +45,118 @@ public class Tiburon extends Thread{
 	}
 	
 	//genera un punto aleatorio al rededor de las coordenadas de parametro 
-	private Point moveOnMatrix(int x, int y){
+	private void moveOnMatrix(int x, int y){
 		Random rand = new Random();
-		
-		Point punto = null;
 		
 		int number = rand.nextInt(8);
 		
 		switch(number){
 		case 0:	//izquierda
 			
-			if(x-1 > 0)
-				punto = new Point(x-1,y);
+			for(int i = 0; i < 50; i++){
+				
+				if(x-1 > 0)
+					try {
+						label.setLocation(x-i,y);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
 			
 			break;
 		case 1:	//derecha
 			
-			if(x+1 < 1300)
-				punto = new Point(x+1,y);
+			for(int i = 0; i < 50; i++){
+				if(x+1 < 1300)
+					try {
+						label.setLocation(x+i,y);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
 			
 			break;
 		case 2:	//arriba
 			
-			if(y-1 > 0)
-				punto = new Point(x,y-1);
+			for(int i = 0; i < 50; i++){
+				if(y-1 > 0)
+					try {
+						label.setLocation(x,y-i);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
 			
 			break;
 		case 3:	//abajo
 			
-			if(y+1 < 700)
-				punto = new Point(x,y+1);
+			for(int i = 0; i < 50; i++){
+				if(y+1 < 700)
+					try {
+						label.setLocation(x,y+i);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
 			
 			break;
 		case 4:	//superior izquierda
 			
-			if(x-1 > 0 && y-1 >0)
-				punto = new Point(x-1,y-1);
+			for(int i = 0; i < 50; i++){
+				if((x-1 > 0) && (y-1 >0))
+					try {
+						label.setLocation(x-i,y-i);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
 			
 			break;
 		case 5:	//superior derecha
 			
-			if(x+1 < 1300 && y-1 > 0)
-				punto = new Point(x+1,y-1);
+			for(int i = 0; i < 50; i++){
+				if((x+1 < 1300) && (y-1 > 0))
+					try {
+						label.setLocation(x+i,y-i);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
 			
 			break;
 		case 6:	//inferior izquierda
 			
-			if(x-1 > 0 && y+1 < 700)
-				punto = new Point(x-1,y+1);
+			for(int i = 0; i < 50; i++){
+				if((x-1 > 0) && (y+1 < 700))
+					try {
+						label.setLocation(x-i,y+i);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
 			
 			break;
 		case 7:	//inferior derecha
 			
-			if(x+1 < 1300 && y+1 < 700)
-				punto = new Point(x+1,y+1);
-				
+			for(int i = 0; i < 50; i++){
+				if((x+1 < 1300) && (y+1 < 700))
+					try {
+						label.setLocation(x+i,y+i);
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+			}
+			
 			break;
 		}
-			
-		return punto;
 	}
 
 
@@ -133,3 +184,4 @@ public class Tiburon extends Thread{
 		this.limite = limite;
 	}
 }
+

@@ -1,9 +1,6 @@
 package com.intec.construccion.pecera.graficos;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Point;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -57,32 +54,44 @@ public class MarcoPecera extends JFrame{
 		
 	}
 	
-	public void addLabelAnimal(ArrayList<Pez> peces){
+	public void addLabelPez(ArrayList<Pez> peces){
 
 		for(Pez p: peces){
-			parteAgua.add(definirLabel(p.getLabel(),p.getSexo()));
+			parteAgua.add(definirLabel(p.getLabel(), 'P', p.getSexo()));
 			p.start();
 		}
 
 	}
 	
-	private JLabel definirLabel(JLabel label, char sexo){
+	public void addLabelTiburon(ArrayList<Tiburon> tiburones){
+
+		for(Tiburon t: tiburones){
+			parteAgua.add(definirLabel(t.getLabel(), 'T', t.getSexo()));
+			t.start();
+		}
+
+	}
+	
+	private JLabel definirLabel(JLabel label, char animal, char sexo){
 		
-		switch (sexo) {
-		case 'M':
-			label.setIcon(pezMacho);
-			break;
-		case 'F':
-			label.setIcon(pezHembra);
-			break;
-		default:
-			break;
+		if(animal == 'P'){
+			if(sexo == 'M'){
+				label.setIcon(pezMacho);
+			}else{
+				label.setIcon(pezHembra);
+			}
+		}else{
+			if(sexo == 'M'){
+				label.setIcon(tibuMacho);
+			}else{
+				label.setIcon(tibuHembra);
+			}
 		}
 		
-		label.setBackground(Color.cyan);
+		label.setBackground(Color.black);
 		label.setOpaque(true);
 		label.setVisible(true);
-		label.setBounds(10, 0, 100, 70);
+		label.setBounds(0, 0, 50, 50);
 		
 		return label;
 	}

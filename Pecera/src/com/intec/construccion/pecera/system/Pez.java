@@ -29,87 +29,19 @@ public class Pez extends Thread{
 		
 		for(int i = 0; i < limite; i++){
 			try {
-				
-				//Point punto = new Point(); //   moveOnMatrix(X,Y);
-				
-				//int xy[] = new int[2];
-				//xy[0] = X;
-				//xy[1] = Y;
-				
-				//xy = GetXY(xy);
-				
-				//X = xy[0];
-				//Y = xy[1];
 								
 				int X = label.getLocation().x;
 				int Y = label.getLocation().y;
 				
 				moveOnMatrix(X,Y);
 				
-				Thread.sleep(0);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 		
 		yield();
-	}
-	
-	private int[] GetXY(int[] xy){
-		Random rand = new Random();
-		int number = rand.nextInt(8);
-		
-		switch(number){
-		case 0:	//izquierda
-			
-			if(xy[0] -1 > 0)
-				xy[0] = xy[0]-1;
-			
-			break;
-		case 1:	//derecha
-			
-			if(xy[0]+1 < 1300)
-				xy[0] = xy[0]+1;
-			break;
-		case 2:	//arriba
-			
-			if(xy[1]-1 > 0)
-				xy[1] = xy[1]-1;
-			
-			break;
-		case 3:	//abajo
-			
-			if(xy[1]+1 < 700)
-				xy[1] = xy[1] +1;
-			
-			break;
-		case 4:	//superior izquierda
-			
-			if( xy[0] -1 > 0 && xy[1] -1 >0)
-				xy[0] = xy[0]-1;xy[1] = xy[1]-1;
-			
-			break;
-		case 5:	//superior derecha
-			
-			if(xy[0]+1 < 1300 && xy[1]-1 > 0)
-				xy[0]= xy[0]+1; xy[1]= xy[1]-1;
-			
-			break;
-		case 6:	//inferior izquierda
-			
-			if(xy[0]-1 > 0 && xy[1]+1 < 700)
-				xy[0]= xy[0]-1;  xy[1]= xy[1]+1;
-			
-			break;
-		case 7:	//inferior derecha
-			
-			if(xy[0]+1 < 1300 && xy[1]+1 < 700)
-				xy[0]= xy[0]+1; xy[1]= xy[1]+1; 
-				
-			break;
-		}
-			
-		return xy;
 	}
 	
 	//genera un punto aleatorio al rededor de las coordenadas de parametro 

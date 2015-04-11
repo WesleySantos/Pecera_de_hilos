@@ -16,7 +16,7 @@ public class Pecera {
 	static JLabel[] labelsPHembra;
 	
 	static ArrayList<Pez> listaPeces = new ArrayList<>();
-	static ArrayList<Pez> listaTiburones = new ArrayList<>();
+	static ArrayList<Tiburon> listaTiburones = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
@@ -34,11 +34,25 @@ public class Pecera {
 			
 			listaPeces.add(pez1);
 			listaPeces.add(pez2);
-			
-			
+
 		}
 		
-		marco.addLabelAnimal(listaPeces);
+		//agregando tiburones manualmente
+		JLabel labeltibu1 = new JLabel();
+		JLabel labeltibu2 = new JLabel();
+		JLabel labeltibu3 = new JLabel();
+		
+		Tiburon tibu1 = new Tiburon('M', labeltibu1, 100, spawnPoint());
+		Tiburon tibu2 = new Tiburon('M', labeltibu2, 100, spawnPoint());
+		Tiburon tibu3 = new Tiburon('F', labeltibu3, 100, spawnPoint());
+		
+		listaTiburones.add(tibu1);
+		listaTiburones.add(tibu2);
+		listaTiburones.add(tibu3);
+		
+		
+		marco.addLabelPez(listaPeces);
+		marco.addLabelTiburon(listaTiburones);
 	}
 	
 	//genera un punto random en las coordenadas X, Y
