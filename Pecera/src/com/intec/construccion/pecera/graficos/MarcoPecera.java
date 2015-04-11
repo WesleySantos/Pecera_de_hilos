@@ -59,7 +59,7 @@ public class MarcoPecera extends JFrame{
 		for(Pez p: peces){
 			parteAgua.add(definirLabel(p.getLabel(), 'P', p.getSexo()));
 			
-			System.out.println(p.getState());
+			//System.out.println(p.getState());
 			Thread c = new Thread(p) ;//p;
 			c.start();
 			//p.start();
