@@ -47,14 +47,15 @@ public class Pecera {
 				if ( isNumber(firstNumber) ) {
 					flag = false;
 				}
-				if ( !flag ) {
+				if ( !flag && !(firstNumber.length() == 0) ) {
 					secondNumber = JOptionPane.showInputDialog("Introduce la cantidad de peces mujeres:");
 					if ( !isNumber(secondNumber)) {
 						flag = true;
 					}
 				}
-				if ( flag ) {
+				if ( flag  || firstNumber.length() == 0 || secondNumber.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Uno de los numeros introducidos contiene un formato invalido, intente otra vez");
+					flag = true;
 				}
 			}
 			cntPez_hombre = Integer.parseInt(firstNumber);
@@ -116,7 +117,7 @@ public class Pecera {
 	//Chequea si un string es numerico
 	private static boolean isNumber( String x ) {
 		for ( int i = x.length()-1; i>=0; i-- ) {
-			if ( x.charAt(i) > '9') {
+			if ( x.charAt(i) > '9' || x.charAt(i) < '0') {
 				return false;
 			}
 		}
