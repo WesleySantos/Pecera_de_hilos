@@ -3,7 +3,6 @@ package com.intec.construccion.pecera.system;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,8 +13,6 @@ public class Pecera {
 	
 	private final static String NombrePecera = "Pecera de asesinatos";
 	private static int cntPez_hombre, cntPez_hembra;
-	private static Scanner reader;
-	
 	static JLabel[] labelsPVaron;
 	static JLabel[] labelsPHembra;
 	
@@ -26,7 +23,7 @@ public class Pecera {
 		
 		MarcoPecera marco = new MarcoPecera(NombrePecera);
 		
-		reader = new Scanner(System.in); //	Instance of the scanner
+		//new Scanner(System.in);
 		
 		try 
 		{
@@ -112,8 +109,8 @@ public class Pecera {
 	
 	//genera un punto random en las coordenadas X, Y
 	private static Point spawnPoint(){
-		int X = randInt(1,1299);
-		int Y = randInt(1,699);
+		int X = randInt(10,1290);
+		int Y = randInt(10, 690);
 		
 		Point punto = new Point(X,Y);
 		

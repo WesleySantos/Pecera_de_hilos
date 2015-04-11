@@ -77,21 +77,24 @@ public class MarcoPecera extends JFrame{
 		if(animal == 'P'){
 			if(sexo == 'M'){
 				label.setIcon(pezMacho);
+				label.setBounds(0, 0, 38, 27);
 			}else{
 				label.setIcon(pezHembra);
+				label.setBounds(0, 0, 48, 26);
 			}
 		}else{
 			if(sexo == 'M'){
 				label.setIcon(tibuMacho);
+				label.setBounds(0, 0, 100, 43);
 			}else{
 				label.setIcon(tibuHembra);
+				label.setBounds(0, 0, 87, 44);
 			}
 		}
 		
-		label.setBackground(Color.black);
+		label.setBackground(Color.cyan);
 		label.setOpaque(true);
 		label.setVisible(true);
-		label.setBounds(0, 0, 50, 50);
 		
 		return label;
 	}
