@@ -11,7 +11,7 @@ import com.intec.construccion.pecera.graficos.MarcoPecera;
 
 public class Pecera {
 	
-	private final static String NombrePecera = "Pecera de asesinatos";
+	private final static String NombrePecera = "Pecera de los inmortales";
 	private static int cntPez_hombre, cntPez_hembra;
 	static JLabel[] labelsPVaron;
 	static JLabel[] labelsPHembra;
@@ -96,14 +96,23 @@ public class Pecera {
 		JLabel labeltibu1 = new JLabel();
 		JLabel labeltibu2 = new JLabel();
 		JLabel labeltibu3 = new JLabel();
+		JLabel labeltibu4 = new JLabel();
+		JLabel labeltibu5 = new JLabel();
+		JLabel labeltibu6 = new JLabel();
 		
 		Tiburon tibu1 = new Tiburon('M', labeltibu1, 100, spawnPoint());
 		Tiburon tibu2 = new Tiburon('M', labeltibu2, 100, spawnPoint());
 		Tiburon tibu3 = new Tiburon('F', labeltibu3, 100, spawnPoint());
+		Tiburon tibu4 = new Tiburon('M', labeltibu4, 100, spawnPoint());
+		Tiburon tibu5 = new Tiburon('M', labeltibu5, 100, spawnPoint());
+		Tiburon tibu6 = new Tiburon('F', labeltibu6, 100, spawnPoint());
 		
 		listaTiburones.add(tibu1);
 		listaTiburones.add(tibu2);
 		listaTiburones.add(tibu3);
+		listaTiburones.add(tibu4);
+		listaTiburones.add(tibu5);
+		listaTiburones.add(tibu6);
 		
 
 		JLabel label1 = new JLabel();
@@ -173,12 +182,19 @@ public class Pecera {
 		*/
 		
 		agregarAlMarco(listaPeces);
-		marco.addLabelTiburon(listaTiburones);
+		agregarAlMarcoT(listaTiburones);
+		
 	}
 	
 	static public void agregarAlMarco(ArrayList<Pez> listaPeces){
 		marco.addLabelPez(listaPeces);
 	}
+	
+	static public void agregarAlMarcoT(ArrayList<Tiburon> listaTiburones){
+		marco.addLabelTiburon(listaTiburones);
+	}
+	
+	
 	//genera un punto random en las coordenadas X, Y
 	private static Point spawnPoint(){
 		int X = randInt(10,1290);

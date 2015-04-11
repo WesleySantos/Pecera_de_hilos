@@ -1,6 +1,8 @@
 package com.intec.construccion.pecera.system;
 
+import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JLabel;
@@ -11,6 +13,8 @@ public class Tiburon extends Thread{
 	private JLabel label;
 	private int limite;
 	public Point puntoLabel;
+	public int numero = 0;
+	ArrayList<Integer> lista = new ArrayList<>();
 	
 	public Tiburon(char sexo, JLabel label, int limite, Point punto){
 		this.setSexo(sexo);
@@ -36,12 +40,58 @@ public class Tiburon extends Thread{
 				moveOnMatrix(X,Y);
 				
 				Thread.sleep(10);
+				
+				chequeaTiburon(label);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 		
 		yield();
+	}
+	
+	public void chequeaTiburon(JLabel label) {
+		boolean bandera = false;
+		ArrayList<Tiburon> lis = new ArrayList<>();
+
+		for (Tiburon p : Pecera.listaTiburones) {
+			bandera = p.getLabel().getBounds().intersects(label.getBounds());
+
+			if (bandera) {
+				if (p.getSexo() == this.getSexo()) {
+					lista.add(p.getNumero());
+					eliminarTiburon(p);
+					System.out.println(p.getNumero());
+					// eliminarPez(label);
+					break;
+				} else {
+					Tiburon tib = new Tiburon('F', new JLabel(), this.getLimite(),
+							new Point(200, 200));
+					lis.add(tib);
+					Pecera.agregarAlMarcoT(lis);
+					System.out.println("tiburones para reproducir");
+				}
+
+			}
+		}
+	}
+	
+	public void eliminarTiburon(Tiburon p) {
+		int k = 0;
+		for (int i = 0; i < lista.size(); i++) {
+			if (p.getNumero() == lista.get(i)) {
+				k = 1;
+				if (k == 1) {
+					// getLabel().setIcon(null) ;
+					p.getLabel().setBackground(Color.red);
+					p.stop();
+
+					k = 0;
+				}
+			}
+		}
+		System.out.println("eliminado");
+
 	}
 	
 	//genera un punto aleatorio al rededor de las coordenadas de parametro 
@@ -182,6 +232,14 @@ public class Tiburon extends Thread{
 
 	public void setLimite(int limite) {
 		this.limite = limite;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 }
 

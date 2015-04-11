@@ -66,12 +66,15 @@ public class MarcoPecera extends JFrame{
 		}
 
 	}
+
 	
 	public void addLabelTiburon(ArrayList<Tiburon> tiburones){
 
 		for(Tiburon t: tiburones){
 			parteAgua.add(definirLabel(t.getLabel(), 'T', t.getSexo()));
-			t.start();
+			Thread c = new Thread(t) ;//p;
+			c.start();
+//			t.start();
 		}
 
 	}
