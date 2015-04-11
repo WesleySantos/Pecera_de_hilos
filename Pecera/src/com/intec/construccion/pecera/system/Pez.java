@@ -1,9 +1,13 @@
 package com.intec.construccion.pecera.system;
 
+import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JLabel;
+
+import com.intec.construccion.pecera.graficos.MarcoPecera;
 
 public class Pez extends Thread{
 
@@ -11,6 +15,8 @@ public class Pez extends Thread{
 	private JLabel label;
 	private int limite;
 	public Point puntoLabel;
+	public int numero =0;
+	ArrayList<Integer> lista = new ArrayList<>();
 	
 	public Pez(char sexo, JLabel label, int limite, Point punto){
 		this.setSexo(sexo);
@@ -49,26 +55,49 @@ public class Pez extends Thread{
 	
 	public void chequeaPez(JLabel label) {
 		boolean bandera = false;
+		ArrayList<Pez> lis = new ArrayList<>();
 
 		for (Pez p : Pecera.listaPeces) {
 			bandera = p.getLabel().getBounds().intersects(label.getBounds());
 
 			if (bandera) {
 				if (p.getSexo() == this.getSexo()) {
-					// eliminarPez(p);
-					eliminarPez(label);
+					lista.add(p.getNumero());
+					eliminarPez(p);
+					System.out.println(p.getNumero());
+					//eliminarPez(label);
 					break;
 				} else {
+					Pez pezx = new Pez('F',new JLabel(), this.getLimite(),new Point(500,500) );
+					lis.add(pezx);
+					Pecera.agregarAlMarco(lis);
 					System.out.println("peces para reproducir");
 				}
-			}
+				
+/*				Pez pezx = new Pez('F',new JLabel(), this.getLimite(),new Point(500,500) );
+				lis.add(pezx);
+				Pecera.agregarAlMarco(lis);
+				System.out.println("peces para reproducir");
+*/			}
 		}
 	}
 
-	public void eliminarPez(JLabel l) {
-
-		l.setIcon(null); // se van todos :(
-		// Thread.stop(); // se detienen todos
+	public void eliminarPez(Pez p) {
+		int k = 0;
+		for (int i = 0; i < lista.size(); i++) {
+			if(p.getNumero() == lista.get(i)){
+				k=1;
+				if(k == 1){
+					//getLabel().setIcon(null) ;
+					p.getLabel().setBackground(Color.red);
+					p.stop();
+					
+					k =0;
+				}
+								}
+		}
+		System.out.println("eliminado");
+		
 	}
 	
 	//genera un punto aleatorio al rededor de las coordenadas de parametro 
@@ -209,6 +238,14 @@ public class Pez extends Thread{
 
 	public void setLimite(int limite) {
 		this.limite = limite;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+	
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 }
 

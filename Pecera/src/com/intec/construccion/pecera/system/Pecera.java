@@ -19,9 +19,11 @@ public class Pecera {
 	static ArrayList<Pez> listaPeces = new ArrayList<>();
 	static ArrayList<Tiburon> listaTiburones = new ArrayList<>();
 	
+	static MarcoPecera marco;
+	
 	public static void main(String[] args) {
 		
-		MarcoPecera marco = new MarcoPecera(NombrePecera);
+		 marco = new MarcoPecera(NombrePecera);
 		
 		//new Scanner(System.in);
 		
@@ -35,6 +37,7 @@ public class Pecera {
 			System.out.println("Ejecutando...");
 			*/
 			//Using GUI
+			
 			
 			boolean flag = true;
 			String firstNumber = null, secondNumber = null;
@@ -102,11 +105,80 @@ public class Pecera {
 		listaTiburones.add(tibu2);
 		listaTiburones.add(tibu3);
 		
+
+		JLabel label1 = new JLabel();
+		JLabel label2 = new JLabel();
+		JLabel label3 = new JLabel();
+		JLabel label4 = new JLabel();
+		JLabel label5 = new JLabel();
+		JLabel label6 = new JLabel();
+		JLabel label7 = new JLabel();
+		JLabel label8 = new JLabel();
 		
-		marco.addLabelPez(listaPeces);
+		Pez pez3 = new Pez('M', label1, 100, spawnPoint());
+		pez3.setNumero(1);
+		Pez pez4 = new Pez('M', label2, 100, spawnPoint());
+		pez4.setNumero(2);
+		Pez pez5 = new Pez('M', label3, 100, spawnPoint());
+		pez5.setNumero(3);
+		Pez pez6 = new Pez('M', label4, 100, spawnPoint());
+		pez6.setNumero(4);
+		
+		/*Pez pez7 = new Pez('F', label5, 100, spawnPoint());
+		pez7.setNumero(5);
+		Pez pez8 = new Pez('F', label6, 100, spawnPoint());
+		pez8.setNumero(6);
+		Pez pez9 = new Pez('F', label7, 100, spawnPoint());
+		pez9.setNumero(7);
+		Pez pez10 = new Pez('F', label8, 100, spawnPoint());
+		pez10.setNumero(8);
+		*/
+
+		/*marco.parteAgua.add(marco.definirLabel(pez3.getLabel(), 'P', pez3.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez4.getLabel(), 'P', pez4.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez5.getLabel(), 'P', pez5.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez6.getLabel(), 'P', pez6.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez7.getLabel(), 'P', pez7.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez8.getLabel(), 'P', pez8.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez9.getLabel(), 'P', pez9.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez10.getLabel(), 'P', pez10.getSexo()));
+		*/
+		listaPeces.add(pez3);
+		listaPeces.add(pez4);
+		listaPeces.add(pez5);
+		listaPeces.add(pez6);
+		/*listaPeces.add(pez7);
+		listaPeces.add(pez8);
+		listaPeces.add(pez9);
+		listaPeces.add(pez10);
+		*/
+		
+		/*marco.parteAgua.add(marco.definirLabel(pez3.getLabel(), 'P', pez3.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez4.getLabel(), 'P', pez4.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez5.getLabel(), 'P', pez5.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez6.getLabel(), 'P', pez6.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez7.getLabel(), 'P', pez7.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez8.getLabel(), 'P', pez8.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez9.getLabel(), 'P', pez9.getSexo()));
+		marco.parteAgua.add(marco.definirLabel(pez10.getLabel(), 'P', pez10.getSexo()));
+		*/
+		/*pez3.start();
+		pez4.start();
+		pez5.start();
+		pez6.start();
+		pez7.start();
+		pez8.start();
+		pez9.start();
+		pez10.start();
+		*/
+		
+		agregarAlMarco(listaPeces);
 		marco.addLabelTiburon(listaTiburones);
 	}
 	
+	static public void agregarAlMarco(ArrayList<Pez> listaPeces){
+		marco.addLabelPez(listaPeces);
+	}
 	//genera un punto random en las coordenadas X, Y
 	private static Point spawnPoint(){
 		int X = randInt(10,1290);
