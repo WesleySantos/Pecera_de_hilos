@@ -36,12 +36,39 @@ public class Pez extends Thread{
 				moveOnMatrix(X,Y);
 				
 				Thread.sleep(10);
+				
+				chequeaPez(label);
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 		
 		yield();
+	}
+	
+	public void chequeaPez(JLabel label) {
+		boolean bandera = false;
+
+		for (Pez p : Pecera.listaPeces) {
+			bandera = p.getLabel().getBounds().intersects(label.getBounds());
+
+			if (bandera) {
+				if (p.getSexo() == this.getSexo()) {
+					// eliminarPez(p);
+					eliminarPez(label);
+					break;
+				} else {
+					System.out.println("peces para reproducir");
+				}
+			}
+		}
+	}
+
+	public void eliminarPez(JLabel l) {
+
+		l.setIcon(null); // se van todos :(
+		// Thread.stop(); // se detienen todos
 	}
 	
 	//genera un punto aleatorio al rededor de las coordenadas de parametro 
